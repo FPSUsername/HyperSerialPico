@@ -73,8 +73,8 @@ jobs:
         path: |
           firmware/*.zip
 
-    - name: Build packages for Adafruit ItsyBitsy RP2040 (release-only)
-      if: startsWith(github.ref, 'refs/tags/')
+    - name: Build packages for Adafruit ItsyBitsy RP2040
+      if: (startsWith(github.ref, 'refs/tags/') != true)
       shell: bash
       run: |
         cd build
