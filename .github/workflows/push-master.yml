@@ -20,6 +20,7 @@ jobs:
       uses: carlosperate/arm-none-eabi-gcc-action@v1
       with:
         release: '14.3.Rel1'
+        checksum: '47ac46b5d1dd2980bd881f6b69cc91c2'
 
     - name: Build packages
       shell: bash
