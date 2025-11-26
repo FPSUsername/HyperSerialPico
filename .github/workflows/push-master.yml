@@ -16,11 +16,18 @@ jobs:
       with:
         submodules: recursive
 
-    - name: Install GNU Arm Embedded Toolchain
-      uses: carlosperate/arm-none-eabi-gcc-action@v1
-      with:
-        release: '14.3.Rel1'
-        checksum: '47ac46b5d1dd2980bd881f6b69cc91c2'
+    #- name: Install GNU Arm Embedded Toolchain
+    #  uses: carlosperate/arm-none-eabi-gcc-action@v1
+    #  with:
+    #    release: '14.3.Rel1'
+
+    - name: Install GNU Arm Embedded Toolchain manually
+      run: |
+            wget https://developer.arm.com/-/media/Files/downloads/gnu/14.3.rel1/binrel/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi.tar.xz
+            echo "17272b6c72d476c82b692a06ada0636c  arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi.tar.xz" | md5sum -c -
+            sudo mkdir -p /opt/arm-toolchain
+            sudo tar -xJf arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi.tar.xz -C /opt/arm-toolchain --strip-components=1
+            echo "/opt/arm-toolchain/bin" >> $GITHUB_PATH
 
     - name: Build packages
       shell: bash
