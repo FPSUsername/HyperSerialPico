@@ -61,7 +61,7 @@ class CalibrationConfig
 	// calibration parameters
 	uint8_t gain = 0xFF;
 	uint8_t red = 0xA0;
-	uint8_t green = 0x78;
+	uint8_t green = 0x50;
 	uint8_t blue = 0xA0;
 
 	/**
