@@ -19,14 +19,14 @@ jobs:
     #- name: Install GNU Arm Embedded Toolchain
     #  uses: carlosperate/arm-none-eabi-gcc-action@v1
     #  with:
-    #    release: '14.3.Rel1'
+    #    release: '12.2.Rel1'
 
     - name: Install GNU Arm Embedded Toolchain manually
       run: |
-            wget https://developer.arm.com/-/media/Files/downloads/gnu/14.3.rel1/binrel/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi.tar.xz
-            echo "17272b6c72d476c82b692a06ada0636c  arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi.tar.xz" | md5sum -c -
+            wget https://developer.arm.com/-/media/Files/downloads/gnu/12.2.Rel1/binrel/arm-gnu-toolchain-12.2.Rel1-x86_64-arm-none-eabi.tar.xz
+            echo "f3d1d32c8ac58f1e0f9dbe4bc56efa05  arm-gnu-toolchain-12.2.Rel1-x86_64-arm-none-eabi.tar.xz" | md5sum -c -
             sudo mkdir -p /opt/arm-toolchain
-            sudo tar -xJf arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi.tar.xz -C /opt/arm-toolchain --strip-components=1
+            sudo tar -xJf arm-gnu-toolchain-12.2.Rel1-x86_64-arm-none-eabi.tar.xz -C /opt/arm-toolchain --strip-components=1
             echo "/opt/arm-toolchain/bin" >> $GITHUB_PATH
 
     - name: Build packages
@@ -187,7 +187,7 @@ jobs:
 
       # create draft release and upload artifacts
       - name: Create draft release
-        uses: softprops/action-gh-release@v2.4.2
+        uses: softprops/action-gh-release@v2.2.2
         with:
           name: HyperSerialPico ${{ env.VERSION }}
           tag_name: ${{ env.TAG }}
